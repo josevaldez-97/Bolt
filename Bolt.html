@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: rgb(30, 36, 45);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .title {
+            font-size: 24px;
+        }
+
+        .price {
+            font-size: 36px;
+        }
+
+        .small {
+            font-size: 14px;
+        }
+
+        .large {
+            font-size: 35px;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background-color: rgb(38, 156, 102);
+            padding: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .footer:hover {
+            transform: translateX(100%);
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Confirmar precio</h1>
+
+        <form id="updateForm" onsubmit="event.preventDefault(); updateData();">
+            <input type="text" id="priceInput" placeholder="Ingrese el precio">
+            <br>
+            <input type="text" id="clienteNombreInput" placeholder="Ingrese el Nombre del Cliente">
+            <br>
+            <button type="submit" id="updateButton">Actualizar</button>
+        </form>
+
+        <p class="price" id="displayPrice">&#8370; </p>
+
+        <p class="small" style="background-color: rgb(38, 156, 102); padding: 10px;">
+            Pago en efectivo, cobra un total de:<br>
+            <span id="displayClienteNombre" class="large"></span>
+        </p>
+
+        <div class="footer">          
+            <p class="small">
+                <span style="float: left;">>></span>
+                <span style="display: block; text-align: center;">Confirmar precio</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function updateData() {
+            var priceInput = document.getElementById('priceInput');
+            var clienteNombreInput = document.getElementById('clienteNombreInput');
+            var displayPrice = document.getElementById('displayPrice');
+            var displayClienteNombre = document.getElementById('displayClienteNombre');
+
+            displayPrice.innerHTML = '&#8370; ' + priceInput.value;
+            displayClienteNombre.innerHTML = clienteNombreInput.value;
+
+            priceInput.style.display = 'none';
+            clienteNombreInput.style.display = 'none';
+            updateButton.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
